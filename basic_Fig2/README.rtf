@@ -1,0 +1,65 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww19160\viewh11280\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 The C-programs generate the data as shown in Figure 2. The parameter are set as in the paper and the supplementary material stated. The program basic_histone_reg.c generates the data of the basic histone feedback loop model under normal S-phase condition and the other C-program basic_DNA_reg.c generates the data for the alternative model, the basic DNA coupled model under normal S-phase conditions.\
+\
+The user will need a C-compiler, e.g. gcc and must compile the code, e.g.:\
+\
+gcc -O3 basic_histone_reg.c -o basic_histone_reg.x -lm\
+(histone feedback loop model)\
+\
+gcc -O3 basic_DNA_reg.c -o basic_DNA_reg.x -lm \
+(DNA coupled model)\
+\
+Running the programs *.x result in four data files:\
+\
+ zr_all.dat\
+ par.dat\
+ flux.dat\
+ netflux.dat\
+\
+containing time series for the dynamical variables, the parameter, the fluxes and the net fluxes, respectively. Please note, running the programs will replace the previous results and both programs write into the same file, i.e. will replace results each other.\
+\
+The data file can be plotted with e.g. gnuplot and the three included scripts\
+\
+ gnuplot multiplot_flux.gnu\
+ gnuplot multiplot_netflux.gnu \
+ gnuplot multiplot5.gnu\
+\
+generate postscript files:\
+\
+histon_flux.ps\
+histon_netflux.ps\
+histon5.ps\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+all in one run in a command line in the terminal with ghost script to show the resulting postscript files:\
+\
+histone feedback loop model:\
+\
+rm basic_histone_reg.x ; gcc -O3 basic_histone_reg.c -o basic_histone_reg.x -lm ; ./basic_histone_reg.x; gnuplot multiplot_flux.gnu ; gv histon_flux.ps & gnuplot multiplot_netflux.gnu ; gv histon_netflux.ps & gnuplot multiplot5.gnu ; gv histon5.ps&  \
+\
+\
+\
+DNA coupled model:\
+\
+rm basic_DNA_reg.x ; gcc -O3 basic_DNA_reg.c -o basic_DNA_reg.x -lm ; ./basic_DNA_reg.x; gnuplot multiplot_flux.gnu ; gv histon_flux.ps & gnuplot multiplot_netflux.gnu ; gv histon_netflux.ps & gnuplot multiplot5.gnu ; gv histon5.ps& \
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+or use the following bash scripts for the same commands:\
+\
+\
+run_histone_basic.sh\
+\
+run_DNA_basic.sh\
+\
+\
+\
+\
+}
